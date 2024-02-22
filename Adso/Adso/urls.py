@@ -13,7 +13,13 @@ urlpatterns = [
     # FORMA 1
     path('crear/', crear_usuario),
     path('accounts/',include('django.contrib.auth.urls')),
-    path('registro/',registro)
+    path('crud/',crud),
+    path('registro/',registro),
+    # FORMA 2
+    path('logueo/', logueo),
+
+    path('logueo2/', logueo2),
+    path('valida_logueo/', valida_logueo)
 
     
     # FORMA 2
