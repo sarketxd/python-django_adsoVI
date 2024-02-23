@@ -1,13 +1,14 @@
-{% block title%}
+{% block title %}
 Registro de Usuarios
-{%endblock%}
+{% endblock %}
 
-{%block content%}
+{% block content %}
 {% if messages %}
 {% for message in mesages %}
 <div class="" {{messages.tags }}>{{message}} </div>
 {% endfor %}
 {% endif %}
+
 <br>
 <div>
 
@@ -21,8 +22,6 @@ Registro de Usuarios
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"></script>
     </head>
-
-
     <div>
         <div>
             <div>
@@ -78,17 +77,19 @@ Registro de Usuarios
 
 
 
-
+                    <!-- #///////////////////////FORMULARIO CREACIÓN DE USUARIO ////////////////////////// -->
                     <!-- //////////FORMA 2//////////////// -->
                 <form action="">
                     {% csrf_token %}
                     {% form.as_p %}
                     <input type="submit" value="Create">
                 </form>
+                <!-- #///////////////////////FIN FORMULARIO CREACIÓN DE USUARIO ////////////////////////// -->
+
                 </p>
             </div>
 
         </div>
 
     </div>
-    {% endblock%}
+    {% endblock %}

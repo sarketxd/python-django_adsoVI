@@ -33,6 +33,8 @@ class persona():
 
 
 # ///////////////////////////////////////FORMA 2 
+
+#///////////////////////CREACIÓN DE USUARIO //////////////////////////
 def crear_usuario(request):
     if request.method == 'POST':
         form = add_usuario(request.POST)
@@ -51,6 +53,8 @@ def crear_usuario(request):
         
     context = {'form': form}
     return render(request, 'crear_usuario.html', context)
+#/////////////////////// FIN CREACIÓN DE USUARIO //////////////////////////
+
 
 
 def saludo(request):
@@ -100,21 +104,22 @@ def index (request):
 
 def valida_logueo(request):
     if request.method == 'POST':
-        usu = request.POST.get('usuario')
-        contra = request.POST.get('contrasena')
-
+        usu = request.POST.get('username')
+        contra = request.POST.get('password')
         if Usuario.objects.filter(nombre=usu).exists():
             logueo = Usuario.objects.get(nombre=usu)
             passw = check_password(contra, logueo.password)
-            if passw == False:
+            if passw == False:                
                 messages.error(request, 'Usuario o contraseña1 incorrecta')
                 return render(request, 'index.html')
-            else:
-                request.session['seguridad'] == True
-                return render(request, 'crud.html')
+            else:                
+                request.session['seguridad'] = True
+                mensaje = "Inicio de sesión exitoso"
+                return render(request, 'index.html', {'mensaje': mensaje})
         else:
             messages.error(request, 'Usuario o contraseña2 incorrecta')
             return render(request, 'logueo.html')
+
 
 #/////////////// LOGUEO 2 //////////#
 
@@ -133,20 +138,22 @@ def logueo2(request):
                 messages.error(request, 'Error al validar datos.')
                 return render(request, 'logueo2.html')
             else:
-                request.session['seguridad']='True'
+                request.session['seguridad'] = 'True'
                 return render(request, 'inicio.html')
         else:
             messages.error(request, 'Error al validar datos.')
             return render(request, 'logueo2.html')
 
+
+
+
 def logueo(request):
     if "seguridad" in request.session:
-        return render(request, "hijo.html")
+        return render(request, "index.html")
     else:
         return render(request, "logueo.html")
 
 def salir(request):
-
     del request.session['seguridad']
     return render(request, 'index.html')
 

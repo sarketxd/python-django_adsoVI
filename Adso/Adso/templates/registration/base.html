@@ -1,15 +1,15 @@
 <ul class="nav navbar-nav navbar-right">
-    {% if user.is_authenticated %}
-    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-            Registro </a></li>
-    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span>
-            Salir</a></li>
-    {% else %}
-    <li><a href="/registro"><span class="glyphicon glyphicon-user"></span>
-            Registro</a>
-    </li>
-    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-            Ingresar</a>
-    </li>
-    {% endif %}
+        {% if user.is_authenticated %}
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+                        Registro </a></li>
+        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span>
+                        Salir</a></li>
+        {% else %}
+        <li><a href="/crear"><span class="glyphicon glyphicon-user"></span>
+                        Registro</a>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+                        Ingresar</a>
+        </li>
+        {% endif %}
 </ul>

@@ -10,21 +10,17 @@ urlpatterns = [
     path('saludo', saludo),
     path('edad/<int:ano>', calcular_edad),
     path('msg_saludo', msg_saludo),
-    # FORMA 1
-    path('crear/', crear_usuario),
     path('accounts/',include('django.contrib.auth.urls')),
     path('crud/',crud),
     path('registro/',registro),
-    # FORMA 2
-    path('logueo/', logueo),
-
     path('logueo2/', logueo2),
-    path('valida_logueo/', valida_logueo)
+  
 
-    
-    # FORMA 2
-    # path('registro/', registro),
-    
+    #//////RUTAS DEL CRUD DE CREACIÓN Y LOGIN    ////
+    path('crear/', crear_usuario),
+    path('logueo/', logueo),
+    path('valida_logueo/', valida_logueo)    
+    #//////////////////// -->
 
 
 
